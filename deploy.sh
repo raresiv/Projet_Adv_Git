@@ -19,7 +19,7 @@ fi
 echo "Cron service verified!"
 
 # ✅ 3. Ensure the data scraping job is in crontab
-SCRAPING_JOB="*/5 * * * * /home/ubuntu/dash-dashboard/scrape_silver.sh >> /home/ubuntu/dash-dashboard/scraper_log.txt 2>&1"
+SCRAPING_JOB="*/5 * * * * /home/ubuntu/dash-dashboard/scrape_silver.sh"
 
 # Check if the scraping cron job exists, if not, add it
 (crontab -l 2>/dev/null | grep -qF "$SCRAPING_JOB") || (echo "$SCRAPING_JOB" | crontab -)

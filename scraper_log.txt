@@ -1,0 +1,4 @@
+Scraped Silver Price: 33.314500000000 USD (Saved to silver_prices.csv)
+Scraped Silver Price: 33.327000000000 USD (Saved to silver_prices.csv)
+Scraped Silver Price: 33.380000000000 USD (Saved to silver_prices.csv)
+Scraped Silver Price: 33.347000000000 USD (Saved to silver_prices.csv)
