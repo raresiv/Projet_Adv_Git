@@ -13,7 +13,7 @@ SILVER_PRICE=$(echo "$HTML" | grep -oP '(?<="value":)[0-9.]+' | head -1)
 TIMESTAMP=$(date +"%Y-%m-%d %H:%M:%S")
 
 # Output file
-OUTPUT_FILE="silver_prices.csv"
+OUTPUT_FILE="/home/ubuntu/dash-dashboard/silver_prices.csv"
 
 # If file doesn't exist, create it with a header
 if [ ! -f "$OUTPUT_FILE" ]; then
