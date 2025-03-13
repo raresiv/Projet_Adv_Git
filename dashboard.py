@@ -5,7 +5,7 @@ import plotly.graph_objs as go
 import os
 
 # File where the scraped data is stored
-CSV_FILE = "silver_prices.csv"
+CSV_FILE  = "/home/ubuntu/dash-dashboard/silver_prices.csv"
 
 # Function to read data
 def load_data():
