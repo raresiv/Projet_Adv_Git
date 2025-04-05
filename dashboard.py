@@ -14,8 +14,9 @@ def load_data():
     if os.path.exists(CSV_FILE):
         df = pd.read_csv(CSV_FILE)
         df.columns = ["Timestamp", "Price"]
-        df['Timestamp'] = pd.to_datetime(df['Timestamp'])
+        df['Timestamp'] = pd.to_datetime(df['Timestamp']) #conversino en format datetime
         return df
+    # SI le fichier n'existe pas on renvoie un dataframe vide
     return pd.DataFrame(columns=["Timestamp", "Price"])
 
 # Fonction pour charger le rapport quotidien
@@ -34,7 +35,7 @@ report = load_report()
 
 # Layout principal
 app.layout = html.Div([
-    html.H1("💰 Live Silver Price Dashboard", style={"textAlign": "center"}),
+    html.H1("Live Silver Price Dashboard", style={"textAlign": "center"}),
 
     # Graphique des prix
     dcc.Graph(id="price-chart"),
@@ -46,16 +47,17 @@ app.layout = html.Div([
         n_intervals=0
     ),
 
-    html.H2("📊 Daily Report - 20h", style={"marginTop": "40px"}),
+    # Affiche du rapport quotidien
+    html.H2("Daily Report - 20h", style={"marginTop": "40px"}),
 
     html.Div(
         children=[
-            html.P(f"📅 Date: {report['date']}"),
-            html.P(f"🟢 Open Price: {report['open_price']} $"),
-            html.P(f"🔴 Close Price: {report['close_price']} $"),
-            html.P(f"📈 Change: {report['change']} $ ({report['percent_change']}%)"),
-            html.P(f"📊 Volatility: {report['volatility']}"),
-	    html.P(f"📉 Average Price: {report['average_price']} $")
+            html.P(f"Date: {report['date']}"),
+            html.P(f"Open Price: {report['open_price']} $"),
+            html.P(f"Close Price: {report['close_price']} $"),
+            html.P(f"Change: {report['change']} $ ({report['percent_change']}%)"),
+            html.P(f"Volatility: {report['volatility']}"),
+	    html.P(f"Average Price: {report['average_price']} $")
         ] if report else [html.P("No report available yet.")],
         style={
             "padding": "20px",
