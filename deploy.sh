@@ -26,6 +26,14 @@ SCRAPING_JOB="*/5 * * * * /home/ubuntu/dash-dashboard/scrape_silver.sh"
 
 echo "Data scraping cron job verified!"
 
+# ✅ 3.2 Ensure the daily report generation job is in crontab
+REPORT_JOB="0 20 * * * /home/ubuntu/venv/bin/python /home/ubuntu/dash-dashboard/generate_report.py >> /home/ubuntu/report_log.txt 2>&1"
+
+(crontab -l 2>/dev/null | grep -qF "$REPORT_JOB") || (crontab -l 2>/dev/null; echo "$REPORT_JOB") | crontab -
+
+echo "Daily report cron job verified!"
+
+
 # ✅ 4. Manual deployment (Only when script is manually executed)
 cd ~/dash-dashboard
 git pull origin main
